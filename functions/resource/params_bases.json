@@ -1,0 +1,49 @@
+{
+  "param_community_all_base": {
+    "banner_log": "",
+    "reflow_position": "1",
+    "expose_nums": "0",
+    "refresh": "0",
+    "shequ_stream": "b",
+    "device_type_name": "TAS-AN00",
+    "group_ids": "",
+    "tab_name": "全部",
+    "device_brand_name": "HUAWEI",
+    "screen_w": "900",
+    "past_num": "0",
+    "sys_o": "android",
+    "tab_id": "0",
+    "sys_v": "7.1.2",
+    "screen_h": "1600",
+    "smzdm_id": "4173124469",
+    "time_sort": "",
+    "reflow_page": "1",
+    "page": "1",
+    "limit": "20"
+  },
+  "param_community_category_base": {
+    "reflow_position": "1",
+    "banner_log": "",
+    "tab_feed_style_type": "1",
+    "refresh": "1",
+    "shequ_stream": "b",
+    "tab_name": "",
+    "past_num": "0",
+    "tab_id": "",
+    "smzdm_id": "4173124469",
+    "reflow_page": "1",
+    "time_sort": "",
+    "page": "1",
+    "limit": "20"
+  },
+  "user_info_base": {
+    "user_smzdm_id": ""
+  },
+  "user_fans_or_followers_base": {
+    "token": "BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs%3D",
+    "offset": 0,
+    "get_total": 1,
+    "target_smzdm_id": "",
+    "limit": 20
+  }
+}
