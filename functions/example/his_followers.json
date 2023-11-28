@@ -1,0 +1,52 @@
+{
+  "error_code": "0",
+  "error_msg": "",
+  "smzdm_id": "4173124469",
+  "s": "2c8783af1ee77f0f8e9fc1a06023c120",
+  "data": {
+    "rows": [
+      {
+        "relate_type": "1",
+        "smzdm_id": "5206970355",
+        "nickname": "\u521b\u4f5c\u52a9\u624b\u5f20\u5c0f\u8349",
+        "description": "\u55e8\u5440\uff01\u88ab\u4f60\u53d1\u73b0\u5566\uff01\u6211\u662f\u4f60\u7684\u521b\u4f5c\u52a9\u624b\uff5e\u5173\u6ce8\u6211\uff0c\u521b\u4f5c\u76f8\u5173\u7684\u95ee\u9898\u90fd\u53ef\u4ee5\u54a8\u8be2\u6211\u54e6",
+        "avatar": "https:\/\/avatarimg.smzdm.com\/default\/5206970355\/616fc430483e4-big.jpg",
+        "level": "38",
+        "vip_level": "7",
+        "creation_date": "",
+        "desc": "\u55e8\u5440\uff01\u88ab\u4f60\u53d1\u73b0\u5566\uff01\u6211\u662f\u4f60\u7684\u521b\u4f5c\u52a9\u624b\uff5e\u5173\u6ce8\u6211\uff0c\u521b\u4f5c\u76f8\u5173\u7684\u95ee\u9898\u90fd\u53ef\u4ee5\u54a8\u8be2\u6211\u54e6",
+        "role": {
+          "is_media": "0",
+          "shenghuojia_type": "0",
+          "baoliao_type": "",
+          "is_official": "1",
+          "is_merchant": "0",
+          "interest_auth_num": "0",
+          "official_auth_desc": "\u4ec0\u4e48\u503c\u5f97\u4e70\u5b98\u65b9\u8d26\u53f7",
+          "official_auth_icon": "https:\/\/res.smzdm.com\/images\/certificate\/offical_medal.png",
+          "official_auth_type": "\u5b98\u65b9\u53f7",
+          "official_auth_url": ""
+        },
+        "avatar_ornament": {
+          "avatar_ornament_id": "22",
+          "app_img": "https:\/\/eimg.smzdm.com\/202008\/06\/5f2bd0f3e8f13615.png",
+          "pc_img": "https:\/\/eimg.smzdm.com\/202008\/06\/5f2bd146ae9881380.png",
+          "name": "\u79cd\u8349\u515a"
+        },
+        "author_role": {
+          "is_media": "0",
+          "shenghuojia_type": "0",
+          "baoliao_type": "",
+          "is_official": "1",
+          "is_merchant": "0",
+          "interest_auth_num": "0",
+          "official_auth_desc": "\u4ec0\u4e48\u503c\u5f97\u4e70\u5b98\u65b9\u8d26\u53f7",
+          "official_auth_icon": "https:\/\/res.smzdm.com\/images\/certificate\/offical_medal.png",
+          "official_auth_type": "\u5b98\u65b9\u53f7",
+          "official_auth_url": ""
+        }
+      }
+    ],
+    "total": "1"
+  }
+}

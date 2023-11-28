@@ -1,0 +1,56 @@
+[INFO]  (2023-11-27 18:53:45,690)  << spider.py >> :: Crawled 654/654 User followers ids of 4237723636
+[INFO]  (2023-11-27 18:53:46,635)  << spider.py >> :: Crawled User Info of 1322476242
+[INFO]  (2023-11-27 18:53:46,653)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:53:47,667)  << spider.py >> :: Crawled User Info of 3269991816
+[INFO]  (2023-11-27 18:53:47,685)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:53:47,690)  << spider.py >> :: Collect and Insert 634700 User Info Data in total
+[INFO]  (2023-11-27 18:53:47,696)  << spider.py >> :: 获得匹配的数据条数1、影响的数据条数1
+[INFO]  (2023-11-27 18:53:47,709)  << spider.py >> :: Crawled User fans' ids Iterator of 7156416594
+[INFO]  (2023-11-27 18:53:47,710)  << spider.py >> :: Crawled User followers' ids Iterator of 7156416594
+[INFO]  (2023-11-27 18:53:48,650)  << spider.py >> :: Crawled 4/4 User fans ids of 7156416594
+[INFO]  (2023-11-27 18:53:49,305)  << spider.py >> :: Crawled 19/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:50,211)  << spider.py >> :: Crawled 57/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:52,681)  << spider.py >> :: Crawled 133/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:55,525)  << spider.py >> :: Crawled 285/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:57,171)  << spider.py >> :: Crawled 589/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:58,873)  << spider.py >> :: Crawled 714/714 User followers ids of 7156416594
+[INFO]  (2023-11-27 18:53:59,219)  << spider.py >> :: Collect and Insert 634700 User Info Data in total
+[INFO]  (2023-11-27 18:53:59,223)  << spider.py >> :: 获得匹配的数据条数1、影响的数据条数1
+[INFO]  (2023-11-27 18:53:59,232)  << spider.py >> :: Crawled User fans' ids Iterator of 8958729926
+[INFO]  (2023-11-27 18:53:59,232)  << spider.py >> :: Crawled User followers' ids Iterator of 8958729926
+[INFO]  (2023-11-27 18:54:00,273)  << spider.py >> :: Crawled 11/11 User fans ids of 8958729926
+[INFO]  (2023-11-27 18:54:01,123)  << spider.py >> :: Crawled 19/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:01,836)  << spider.py >> :: Crawled User Info of 9714054508
+[INFO]  (2023-11-27 18:54:01,840)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:54:02,744)  << spider.py >> :: Crawled 57/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:03,788)  << spider.py >> :: Crawled 133/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:05,390)  << spider.py >> :: Crawled 285/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:08,777)  << spider.py >> :: Crawled 589/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:11,613)  << spider.py >> :: Crawled 698/698 User followers ids of 8958729926
+[INFO]  (2023-11-27 18:54:14,192)  << spider.py >> :: Crawled User Info of 1149329548
+[INFO]  (2023-11-27 18:54:14,196)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:54:14,201)  << spider.py >> :: Collect and Insert 634702 User Info Data in total
+[INFO]  (2023-11-27 18:54:14,206)  << spider.py >> :: 获得匹配的数据条数1、影响的数据条数1
+[INFO]  (2023-11-27 18:54:14,214)  << spider.py >> :: Crawled User fans' ids Iterator of 7733211496
+[INFO]  (2023-11-27 18:54:14,214)  << spider.py >> :: Crawled User followers' ids Iterator of 7733211496
+[INFO]  (2023-11-27 18:54:15,791)  << spider.py >> :: Crawled 10/10 User fans ids of 7733211496
+[INFO]  (2023-11-27 18:54:17,644)  << spider.py >> :: Crawled User Info of 1133050640
+[INFO]  (2023-11-27 18:54:17,649)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:54:18,046)  << spider.py >> :: Crawled 19/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:20,392)  << spider.py >> :: Crawled 57/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:22,619)  << spider.py >> :: Crawled 133/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:24,910)  << spider.py >> :: Crawled 285/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:27,187)  << spider.py >> :: Crawled 589/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:29,213)  << spider.py >> :: Crawled 952/952 User followers ids of 7733211496
+[INFO]  (2023-11-27 18:54:30,842)  << spider.py >> :: Crawled User Info of 9124892359
+[INFO]  (2023-11-27 18:54:30,846)  << spider.py >> :: Insert 1 Data into smzdm-User_info
+[INFO]  (2023-11-27 18:54:30,852)  << spider.py >> :: Collect and Insert 634704 User Info Data in total
+[INFO]  (2023-11-27 18:54:30,856)  << spider.py >> :: 获得匹配的数据条数1、影响的数据条数1
+[INFO]  (2023-11-27 18:54:30,865)  << spider.py >> :: Crawled User fans' ids Iterator of 8419003883
+[INFO]  (2023-11-27 18:54:30,865)  << spider.py >> :: Crawled User followers' ids Iterator of 8419003883
+[INFO]  (2023-11-27 18:54:32,662)  << spider.py >> :: Crawled 7/7 User fans ids of 8419003883
+[INFO]  (2023-11-27 18:54:34,401)  << spider.py >> :: Crawled 19/821 User followers ids of 8419003883
+[INFO]  (2023-11-27 18:54:36,727)  << spider.py >> :: Crawled 57/821 User followers ids of 8419003883
+[INFO]  (2023-11-27 18:54:38,731)  << spider.py >> :: Crawled 133/821 User followers ids of 8419003883
+[INFO]  (2023-11-27 18:54:41,680)  << spider.py >> :: Crawled 285/821 User followers ids of 8419003883
+[INFO]  (2023-11-27 18:54:43,763)  << spider.py >> :: Crawled 589/821 User followers ids of 8419003883

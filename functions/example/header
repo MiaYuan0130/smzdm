@@ -1,0 +1,13 @@
+POST
+
+https://user-api.smzdm.com/users/info
+v=10.6.10&basic_v=0&f=android&sign=2641910AD7D7D286A744FFF24986E1BD&weixin=1&time=1700798111000&user_smzdm_id=2587985363
+
+https://user-api.smzdm.com/friendships/his_followers
+v=10.6.10&sign=D0A420CEA532D932A8AB3428EEF184DA&weixin=1&time=1700798111000&token=BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs%3D&offset=0&basic_v=0&f=android&get_total=1&target_smzdm_id=2587985363&limit=20
+
+https://user-api.smzdm.com/friendships/his_fans
+v=10.6.10&sign=96F0890926AA661F13F699B812004355&weixin=1&time=1700798509000&token=BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs%3D&offset=0&basic_v=0&f=android&get_total=1&target_smzdm_id=2587985363&limit=20
+
+https://user-api.smzdm.com/friendships/his_fans
+v=10.6.10&sign=3BF6181FBD6E61EE5437DE4D6C1BF146&weixin=1&time=1700798509000&token=BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs%3D&offset=20&basic_v=0&f=android&get_total=1&target_smzdm_id=2587985363&limit=20
