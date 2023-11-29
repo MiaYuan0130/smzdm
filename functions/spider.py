@@ -36,12 +36,12 @@ class Spider:
         }
         self.col = None
         self.pool = ThreadPoolExecutor(max_workers=Constants.MAX_WORKERS)
+        self.conn = MongoClient(Constants.MONGO_URL)
+        self.smzdm_base = self.conn[Constants.DB_NAME]
 
     def _save(self, data, method="one", to='Mongo'):
         if to == 'Mongo':
-            conn = MongoClient(Constants.MONGO_URL)
-            smzdm_base = conn[Constants.DB_NAME]
-            collection = smzdm_base[self.col]
+            collection = self.smzdm_base[self.col]
             if method == "one":
                 try:
                     collection.insert_one(data)
@@ -71,9 +71,7 @@ class Spider:
 
     def _search(self, filter_dict=None, method="many", to='Mongo'):
         if to == "Mongo":
-            conn = MongoClient(Constants.MONGO_URL)
-            smzdm_base = conn[Constants.DB_NAME]
-            collection = smzdm_base[self.col]
+            collection = self.smzdm_base[self.col]
             if method == "many":
                 try:
                     cursor = collection.find(filter_dict)
@@ -99,9 +97,7 @@ class Spider:
 
     def _update(self, filter_dict, update_dict, method="one", to='Mongo'):
         if to == "Mongo":
-            conn = MongoClient(Constants.MONGO_URL)
-            smzdm_base = conn[Constants.DB_NAME]
-            collection = smzdm_base[self.col]
+            collection = self.smzdm_base[self.col]
             if method == "many":
                 try:
                     result = collection.update_many(filter_dict, update_dict)
@@ -146,6 +142,7 @@ class UserIdSpiderAPP(Spider):
         console_logger.info("START CRAWLING".center(70, '='))
         self._check_first()
         self._main_loop()
+        self.conn.close()
 
     def _main_loop(self):
         while 1:
