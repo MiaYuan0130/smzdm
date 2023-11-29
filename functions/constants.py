@@ -11,7 +11,7 @@ filepath = os.path.dirname(os.path.realpath(__file__))
 
 class Constants:
     MAX_WORKERS = 10
-    BACKUP_COUNT = 30
+    BACKUP_COUNT = 10
     CATEGORY = [("笔记", 172), ("好文", 174), ("众测", 176), ("数码", 177), ("汽车", 178), ("装修", 181), ("日百", 184),
                 ("家电", 186), ("健康", 190), ("金融", 189), ("时尚", 188), ("美食", 187), ("运动", 183), ("旅行", 185),
                 ("生活", 191), ("文娱", 180), ("亲子", 182), ("海淘", 179)]
@@ -21,7 +21,7 @@ class Constants:
         "user_followers": "https://user-api.smzdm.com/friendships/his_followers",
         "community": "https://article-api.smzdm.com/shequ/index"
     }
-    MONGO_URL = "mongodb://wyp:wyp0413@localhost:27017/"
+    MONGO_URL = "mongodb://localhost:27017/"
     DB_NAME = 'smzdm'
     with open(filepath + "/resource/params_bases.json") as f:
         PARAMS_BASES = json.load(f)

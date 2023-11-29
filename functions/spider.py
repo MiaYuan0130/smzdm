@@ -9,11 +9,10 @@ import time
 
 import requests
 import logging.config
-from pymongo import MongoClient
-from pymongo.errors import DuplicateKeyError
 from requests.exceptions import JSONDecodeError
 from concurrent.futures import ThreadPoolExecutor, wait
 
+import functions.database as database
 import functions.log as log
 from functions.encrypt import Encrypt
 from functions.constants import Constants
@@ -25,97 +24,26 @@ console_logger = logging.getLogger("console_logger")
 
 class Spider:
 
-    def __init__(self, logger_name="console_logger"):
-        if logger_name is None:
-            self.logger = logging.getLogger("file_logger")
-        else:
-            self.logger = logging.getLogger(logger_name)
+    def __init__(self, logger_name="console_logger", database_type="Mongo", **kwargs):
+        self.logger = logging.getLogger(logger_name)
         self.header = {
             "user-agent": "smzdm_android_V10.6.10 rv:930 (TAS-AN00;Android7.1.2;zh)smzdmapp",
             "cookie": Spider.cookie_make()
         }
-        self.col = None
+        self.database = getattr(database, database_type)(**kwargs)
         self.pool = ThreadPoolExecutor(max_workers=Constants.MAX_WORKERS)
-        self.conn = MongoClient(Constants.MONGO_URL)
-        self.smzdm_base = self.conn[Constants.DB_NAME]
 
-    def _save(self, data, method="one", to='Mongo'):
-        if to == 'Mongo':
-            collection = self.smzdm_base[self.col]
-            if method == "one":
-                try:
-                    collection.insert_one(data)
-                except Exception as e:
-                    if isinstance(e, DuplicateKeyError):
-                        self.logger.warning(
-                            f"Insert Collection {self.col} with DuplicateKeyError for {data.get('_id')}")
-                    else:
-                        self.logger.exception(f"Insert Collection {self.col} with Error: {e}")
-                    return False
-                else:
-                    self.logger.info(f"Insert 1 Data into {Constants.DB_NAME}-{self.col}")
-                    return True
-            else:
-                try:
-                    collection.insert_many(data)
-                except Exception as e:
-                    if isinstance(e, DuplicateKeyError):
-                        self.logger.warning(
-                            f"Insert Collection {self.col} with DuplicateKeyError for {data.get('_id')}")
-                    else:
-                        self.logger.exception(f"Insert Collection {self.col} with Error: {e}")
-                    return False
-                else:
-                    self.logger.info(f"Insert {len(data)} Data into {Constants.DB_NAME}-{self.col}")
-                    return True
+    def _save(self, data, method="one"):
+        self.database.save(data, method)
 
-    def _search(self, filter_dict=None, method="many", to='Mongo'):
-        if to == "Mongo":
-            collection = self.smzdm_base[self.col]
-            if method == "many":
-                try:
-                    cursor = collection.find(filter_dict)
-                except Exception as e:
-                    self.logger.exception(f"Find from Collection {self.col}: Error: {e}")
-                    return []
-                else:
-                    return cursor
-            else:
-                try:
-                    cursor = collection.find_one(filter_dict)
-                except Exception as e:
-                    self.logger.exception(f"Find from Collection {self.col}: Error: {e}")
-                    return []
-                else:
-                    return cursor
+    def _search(self, filter_dict=None, method="many"):
+        return self.database.search(filter_dict, method)
 
     def _search_count(self):
-        conn = MongoClient(Constants.MONGO_URL)
-        smzdm_base = conn[Constants.DB_NAME]
-        collection = smzdm_base[self.col]
-        return collection.estimated_document_count()
+        return self.database.search_count()
 
-    def _update(self, filter_dict, update_dict, method="one", to='Mongo'):
-        if to == "Mongo":
-            collection = self.smzdm_base[self.col]
-            if method == "many":
-                try:
-                    result = collection.update_many(filter_dict, update_dict)
-                except Exception as e:
-                    self.logger.exception(f"Update data of Collection {self.col}: Error: {e}")
-                    return False
-                else:
-                    self.logger.info(f"获得匹配的数据条数{result.matched_count}、影响的数据条数{result.modified_count}")
-                    return True
-            else:
-                try:
-                    result = collection.update_one(filter_dict, update_dict)
-                except Exception as e:
-                    self.logger.exception(f"Update data of Collection {self.col}: Error: {e}")
-                    return False
-                else:
-                    self.logger.info(f"获得匹配的数据条数{result.matched_count}、影响的数据条数{result.modified_count}")
-                    return True
+    def _update(self, filter_dict, update_dict, method="one"):
+        self.database.update(filter_dict, update_dict, method)
 
     def crawl(self):
         pass
@@ -132,17 +60,15 @@ class Spider:
 
 class UserIdSpiderAPP(Spider):
 
-    def __init__(self, is_first=False, logger_name="console_logger"):
-        super().__init__(logger_name)
+    def __init__(self, is_first=False, logger_name="console_logger", database_type="Mongo", **kwargs):
+        super().__init__(logger_name, database_type, **kwargs)
         self.is_first = is_first
 
     def crawl(self):
-        self.col = 'User_info'
         console_logger.info(f"Already have {self._search_count()} User Info Data in total".center(70, '='))
         console_logger.info("START CRAWLING".center(70, '='))
         self._check_first()
         self._main_loop()
-        self.conn.close()
 
     def _main_loop(self):
         while 1:
