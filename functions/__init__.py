@@ -7,8 +7,10 @@
 from . database import *
 from . constants import *
 from . spider import *
+from . error import *
 
 __all__ = []
 __all__ += database.__all__
 __all__ += constants.__all__
 __all__ += spider.__all__
+__all__ += error.__all__
