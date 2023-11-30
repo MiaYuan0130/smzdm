@@ -12,11 +12,12 @@ import logging.config
 from requests.exceptions import JSONDecodeError
 from concurrent.futures import ThreadPoolExecutor, wait
 
-import functions.database as database
-import functions.log as log
-from functions.encrypt import Encrypt
-from functions.constants import Constants
+import database
+import log
+from encrypt import Encrypt
+from constants import Constants
 
+__all__ = ['UserIdSpiderAPP']
 logging.config.dictConfig(log.getLogConfig("Spider"))
 filepath = os.path.dirname(os.path.realpath(__file__))
 console_logger = logging.getLogger("console_logger")
@@ -203,7 +204,8 @@ class UserIdSpiderAPP(Spider):
                 try:
                     user_fans_or_followers = resp.json().get("data").get("rows")
                 except JSONDecodeError as e:
-                    console_logger.exception(f"JSONDecodeError happened with content", resp.content.decode())
+                    console_logger.exception(f"JSONDecodeError happened with content {resp.content.decode()}")
+                    console_logger.exception(resp.url, resp.status_code)
                     break
                 else:
                     total_num = int(resp.json().get("data").get("total"))

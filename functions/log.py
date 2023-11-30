@@ -1,10 +1,12 @@
 import os
-from functions.constants import Constants
+from constants import Constants
 
 filepath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 
 
 def getLogConfig(name):
+    if not os.path.exists(filepath+'/log'):
+        os.makedirs(filepath+'/log')
     LOG_CONFIG_DICT = {
         "version": 1,
         "disable_existing_loggers": False,

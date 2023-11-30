@@ -6,6 +6,8 @@
 import json
 import os
 
+
+__all__ = ['Constants']
 filepath = os.path.dirname(os.path.realpath(__file__))
 
 
