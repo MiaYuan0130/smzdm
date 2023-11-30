@@ -1,7 +1,8 @@
 import os
-from constants import Constants
+from .constants import Constants
+import __main__
 
-filepath = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+filepath = os.path.dirname(__main__.__file__)
 
 
 def getLogConfig(name):

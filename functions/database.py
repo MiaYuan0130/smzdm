@@ -4,14 +4,16 @@
 # @file : database.py
 # @SoftWare : PyCharm
 
+
+__all__ = ['Mongo']
+
 import logging.config
 from abc import abstractmethod
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 
-import functions.log as log
-
-from functions.constants import Constants
+from . import log
+from .constants import Constants
 
 logging.config.dictConfig(log.getLogConfig("Database"))
 

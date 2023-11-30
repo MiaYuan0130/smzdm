@@ -12,14 +12,13 @@ import logging.config
 from requests.exceptions import JSONDecodeError
 from concurrent.futures import ThreadPoolExecutor, wait
 
-import database
-import log
-from encrypt import Encrypt
-from constants import Constants
+from . import database
+from . import log
+from .encrypt import Encrypt
+from .constants import Constants
 
 __all__ = ['UserIdSpiderAPP']
 logging.config.dictConfig(log.getLogConfig("Spider"))
-filepath = os.path.dirname(os.path.realpath(__file__))
 console_logger = logging.getLogger("console_logger")
 
 

@@ -4,9 +4,9 @@
 # @file : __init__.py
 # @SoftWare : PyCharm
 
-from database import *
-from constants import *
-from spider import *
+from . database import *
+from . constants import *
+from . spider import *
 
 __all__ = []
 __all__ += database.__all__
