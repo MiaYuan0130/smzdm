@@ -113,12 +113,10 @@ class UserIdSpiderAPP(Spider):
             self.logger.info(f"Collect and Insert {self._search_count()} User Info Data in total !!!!")
 
     def _crawl_fans_or_follower_helper(self, ids):
-        futures = []
-        for smzdm_ids in ids:
-            existed_smzdm_ids = [doc.get("_id") for doc in
-                                 self._search(filter_dict={"_id": {"$in": smzdm_ids}}, method='many')]
-            futures.extend([self.pool.submit(self._crawl_user_info_and_save, smzdm_id) for smzdm_id in
-                            smzdm_ids if smzdm_id not in existed_smzdm_ids])
+        futures = [self.pool.submit(self._crawl_user_info_and_save, smzdm_id) for smzdm_ids in ids for smzdm_id in
+                   smzdm_ids if smzdm_id not in [doc.get("_id") for doc in
+                                                 self._search(filter_dict={"_id": {"$in": smzdm_ids}}, method='many')]]
+
         # pool.map(self._crawl_user_info_and_save, smzdm_ids, timeout=10)  # map方法
         # for smzdm_id in smzdm_ids:
         #     user_info_data = self._crawl_user_info(smzdm_id)
