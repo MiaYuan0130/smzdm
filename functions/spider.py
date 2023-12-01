@@ -71,28 +71,37 @@ class UserIdSpiderAPP(Spider):
         self._main_loop()
 
     def _main_loop(self):
-        while 1:
-            users_before = self._search_count()
-            searched_user_info_data = self._search(filter_dict={"is_used_for_search": False}, method='one')
-            if searched_user_info_data is None:
-                self.pool.shutdown()
-                break
-            searched_smzdm_id = searched_user_info_data.get("_id")
-            console_logger.info(f"CRAWLING {searched_smzdm_id} RELATED IDS".center(70, '='))
-            fans_ids = self._crawl_user_fans_or_followers(smzdm_id=searched_smzdm_id, category="fans")
-            self.logger.info(f"Crawled User fans' ids Iterator of {searched_smzdm_id}")
-            followers_ids = self._crawl_user_fans_or_followers(smzdm_id=searched_smzdm_id, category="followers")
-            self.logger.info(f"Crawled User followers' ids Iterator of {searched_smzdm_id}")
+        try:
+            while 1:
+                users_before = self._search_count()
+                searched_user_info_data = self._search(filter_dict={"is_used_for_search": False}, method='one')
+                if searched_user_info_data is None:
+                    self.pool.shutdown()
+                    break
+                searched_smzdm_id = searched_user_info_data.get("_id")
+                self._update(filter_dict={"_id": searched_smzdm_id}, update_dict={'$set': {"is_used_for_search": None}})
+                console_logger.info(f"CRAWLING {searched_smzdm_id} RELATED IDS".center(70, '='))
+                fans_ids = self._crawl_user_fans_or_followers(smzdm_id=searched_smzdm_id, category="fans")
+                self.logger.info(f"Crawled User fans' ids Iterator of {searched_smzdm_id}")
+                followers_ids = self._crawl_user_fans_or_followers(smzdm_id=searched_smzdm_id, category="followers")
+                self.logger.info(f"Crawled User followers' ids Iterator of {searched_smzdm_id}")
 
-            futures = self._crawl_fans_or_follower_helper(fans_ids)
-            futures.extend(self._crawl_fans_or_follower_helper(followers_ids))
-            if futures:
-                wait(futures)
-            users_after = self._search_count()
-            self.logger.info(f"Collect and Insert {users_after} User Info Data in total")
-            self._update(filter_dict={"_id": searched_smzdm_id}, update_dict={'$set': {"is_used_for_search": True}})
-            console_logger.info(
-                f"CRAWLED {searched_smzdm_id} RELATED {users_after - users_before} NEW IDS".center(70, '='))
+                futures = self._crawl_fans_or_follower_helper(fans_ids)
+                futures.extend(self._crawl_fans_or_follower_helper(followers_ids))
+                if futures:
+                    wait(futures)
+                users_after = self._search_count()
+                self.logger.info(f"Collect and Insert {users_after} User Info Data in total")
+                self._update(filter_dict={"_id": searched_smzdm_id}, update_dict={'$set': {"is_used_for_search": True}})
+                console_logger.info(
+                    f"CRAWLED {searched_smzdm_id} RELATED {users_after - users_before} NEW IDS".center(70, '='))
+        except KeyboardInterrupt:
+            console_logger.info(f"EXIT CRAWLING".center(70, '='))
+            self.pool.shutdown()
+            searched_user_info_data = self._search(filter_dict={"is_used_for_search": None}, method='one')
+            if searched_user_info_data:
+                searched_smzdm_id = searched_user_info_data.get("_id")
+                self._update(filter_dict={"_id": searched_smzdm_id}, update_dict={'$set': {"is_used_for_search": True}})
 
     def _check_first(self):
         if self.is_first:
