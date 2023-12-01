@@ -113,8 +113,12 @@ class UserIdSpiderAPP(Spider):
             self.logger.info(f"Collect and Insert {self._search_count()} User Info Data in total !!!!")
 
     def _crawl_fans_or_follower_helper(self, ids):
-        futures = [self.pool.submit(self._crawl_user_info_and_save, smzdm_id) for smzdm_ids in ids for smzdm_id in
-                   smzdm_ids]
+        futures = []
+        for smzdm_ids in ids:
+            existed_smzdm_ids = [doc.get("_id") for doc in
+                                 self._search(filter_dict={"_id": {"$in": smzdm_ids}}, method='many')]
+            futures.extend([self.pool.submit(self._crawl_user_info_and_save, smzdm_id) for smzdm_id in
+                            smzdm_ids if smzdm_id not in existed_smzdm_ids])
         # pool.map(self._crawl_user_info_and_save, smzdm_ids, timeout=10)  # map方法
         # for smzdm_id in smzdm_ids:
         #     user_info_data = self._crawl_user_info(smzdm_id)
@@ -122,10 +126,10 @@ class UserIdSpiderAPP(Spider):
         return futures
 
     def _crawl_user_info_and_save(self, smzdm_id):
-        existed = self._search(filter_dict={"_id": smzdm_id}, method='one')
-        if existed is None:
-            user_info_data = self._crawl_user_info(smzdm_id)
-            self._save(data=user_info_data)
+        # existed = self._search(filter_dict={"_id": smzdm_id}, method='one')
+        # if existed is None:
+        user_info_data = self._crawl_user_info(smzdm_id)
+        self._save(data=user_info_data)
 
     def _crawl_ids_from_community(self, tab_name="全部", tab_id=0):
         url_community = Constants.URLS.get("community")
