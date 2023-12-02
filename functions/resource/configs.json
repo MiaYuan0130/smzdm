@@ -1,0 +1,190 @@
+{
+  "ALLOW_TO_CONFIGURE": {
+    "COOKIE_INFO": {
+      "smzdm_version": "10.6.10",
+      "device_type": "HUAWEITAS-AN00",
+      "client_id": "4d94fb62a866bca2cd29cac7deee1616.1700579835158",
+      "apk_partner_name": "tencent",
+      "last_article_info": "",
+      "z_dr": "2c8783af1ee77f0f8e9fc1a06023c120",
+      "register_time": "1700478285",
+      "smzdm_id": "4173124469",
+      "login": "1",
+      "session_id": "4d94fb62a866bca2cd29cac7deee1616.1700709556338",
+      "partner_name": "tencent",
+      "device_recfeed_setting": {
+        "haojia_recfeed_switch": "1",
+        "homepage_sort_switch": "1",
+        "other_recfeed_switch": "1",
+        "shequ_recfeed_switch": "1"
+      },
+      "is_new_user": "0",
+      "partner_id": "13",
+      "apk_partner_id": "13",
+      "z_ai": "",
+      "pid": "QLi9E9EcVgt816XRdrIc8iujXV+Y+hkNPd35C2/DHcBzbfQDpoHn1A==",
+      "sess": "BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs=",
+      "z_me": "",
+      "new_device_id": "2c8783af1ee77f0f8e9fc1a06023c120",
+      "device_smzdm_version_code": "930",
+      "network": "1",
+      "device_system_version": "7.1.2",
+      "device_id": "2c8783af1ee77f0f8e9fc1a06023c120",
+      "device_rid": "4d94fb62a866bca2cd29cac7deee1616",
+      "sessionID": "4d94fb62a866bca2cd29cac7deee1616.1700709556338",
+      "device_push": "1",
+      "device_smzdm": "android",
+      "active_time": "1700579837",
+      "basic_v": "0",
+      "device_s": "2c8783af1ee77f0f8e9fc1a06023c120",
+      "device_smzdm_version": "10.6.10",
+      "ab_test": "z3"
+    },
+    "PARAMS_BASES": {
+      "param_community_all_base": {
+        "banner_log": "",
+        "reflow_position": "1",
+        "expose_nums": "0",
+        "refresh": "0",
+        "shequ_stream": "b",
+        "device_type_name": "TAS-AN00",
+        "group_ids": "",
+        "tab_name": "全部",
+        "device_brand_name": "HUAWEI",
+        "screen_w": "900",
+        "past_num": "0",
+        "sys_o": "android",
+        "tab_id": "0",
+        "sys_v": "7.1.2",
+        "screen_h": "1600",
+        "smzdm_id": "4173124469",
+        "time_sort": "",
+        "reflow_page": "1",
+        "page": "1",
+        "limit": "20"
+      },
+      "param_community_category_base": {
+        "reflow_position": "1",
+        "banner_log": "",
+        "tab_feed_style_type": "1",
+        "refresh": "1",
+        "shequ_stream": "b",
+        "tab_name": "",
+        "past_num": "0",
+        "tab_id": "",
+        "smzdm_id": "4173124469",
+        "reflow_page": "1",
+        "time_sort": "",
+        "page": "1",
+        "limit": "20"
+      },
+      "user_info_base": {
+        "user_smzdm_id": ""
+      },
+      "user_fans_or_followers_base": {
+        "token": "BB-1RsKxXyCRAX0UCUtN9SG9anGXn5cA8NFJ2Ke0lxxDXSs5mylF7g5XaXeDmdR3Zo9iU2A2JGgKFXWYSXOxis9p775EKs%3D",
+        "offset": 0,
+        "get_total": 1,
+        "target_smzdm_id": "",
+        "limit": 20
+      }
+    },
+    "LOG_CONFIG": {
+      "version": 1,
+      "disable_existing_loggers": false,
+      "formatters": {
+      },
+      "filters": {
+      },
+      "handlers": {
+      },
+      "loggers": {
+      }
+    },
+    "MAX_WORKERS": 10,
+    "MONGO_URL": "mongodb://localhost:27017/",
+    "DB_NAME": "smzdm"
+  },
+  "DISALLOW_TO_CONFIGURE": {
+    "URLS": {
+      "user_info": "https://user-api.smzdm.com/users/info",
+      "user_fans": "https://user-api.smzdm.com/friendships/his_fans",
+      "user_followers": "https://user-api.smzdm.com/friendships/his_followers",
+      "community": "https://article-api.smzdm.com/shequ/index"
+    },
+    "CATEGORY": [
+      {
+        "name": "笔记",
+        "code": 172
+      },
+      {
+        "name": "好文",
+        "code": 174
+      },
+      {
+        "name": "众测",
+        "code": 176
+      },
+      {
+        "name": "数码",
+        "code": 177
+      },
+      {
+        "name": "汽车",
+        "code": 178
+      },
+      {
+        "name": "装修",
+        "code": 181
+      },
+      {
+        "name": "日百",
+        "code": 184
+      },
+      {
+        "name": "家电",
+        "code": 186
+      },
+      {
+        "name": "健康",
+        "code": 190
+      },
+      {
+        "name": "金融",
+        "code": 189
+      },
+      {
+        "name": "时尚",
+        "code": 188
+      },
+      {
+        "name": "美食",
+        "code": 187
+      },
+      {
+        "name": "运动",
+        "code": 183
+      },
+      {
+        "name": "旅行",
+        "code": 185
+      },
+      {
+        "name": "生活",
+        "code": 191
+      },
+      {
+        "name": "文娱",
+        "code": 180
+      },
+      {
+        "name": "亲子",
+        "code": 182
+      },
+      {
+        "name": "海淘",
+        "code": 179
+      }
+    ]
+  }
+}
