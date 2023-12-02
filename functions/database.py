@@ -7,20 +7,17 @@
 
 __all__ = ['Mongo']
 
-import logging.config
 from abc import abstractmethod
 from pymongo import MongoClient
 from pymongo.errors import DuplicateKeyError
 
-from . import log
+from .logger.logger import Logger
 from .constants import Constants
-
-logging.config.dictConfig(log.getLogConfig("Database"))
 
 
 class Database:
     def __init__(self, **kwargs):
-        self.logger = logging.getLogger("Database")
+        self.logger = Logger("Database").get_logger()
 
     @abstractmethod
     def save(self, *args, **kwargs):
@@ -39,8 +36,8 @@ class Mongo(Database):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.collection_name = kwargs.get("collection_name", "User_info")
-        self.connection = MongoClient(Constants.MONGO_URL)
-        self.smzdm_base = self.connection[Constants.DB_NAME]
+        self.connection = MongoClient(kwargs.get("database_url", Constants.MONGO_URL))
+        self.smzdm_base = self.connection[kwargs.get("database_name", Constants.DB_NAME)]
         self.collection = self.smzdm_base[self.collection_name]
 
     def save(self, data, method='one'):

@@ -3,29 +3,26 @@
 # @time : 2023/11/21 : 21:14
 # @file : spider.py
 # @SoftWare : PyCharm
-import os.path
 import random
 import time
 
 import requests
-import logging.config
 from requests.exceptions import JSONDecodeError
 from concurrent.futures import ThreadPoolExecutor, wait
 
 from . import database
-from . import log
+from .logger.logger import Logger
 from .encrypt import Encrypt
 from .constants import Constants
 
 __all__ = ['UserIdSpiderAPP']
-logging.config.dictConfig(log.getLogConfig("Spider"))
-console_logger = logging.getLogger("console_logger")
+console_logger = Logger("console_logger").get_logger()
 
 
 class Spider:
 
-    def __init__(self, logger_name="console_logger", database_type="Mongo", **kwargs):
-        self.logger = logging.getLogger(logger_name)
+    def __init__(self, logger_name="Spider", database_type="Mongo", **kwargs):
+        self.logger = Logger(logger_name).get_logger()
         self.header = {
             "user-agent": "smzdm_android_V10.6.10 rv:930 (TAS-AN00;Android7.1.2;zh)smzdmapp",
             "cookie": Spider.cookie_make()
@@ -60,7 +57,7 @@ class Spider:
 
 class UserIdSpiderAPP(Spider):
 
-    def __init__(self, is_first=False, logger_name="console_logger", database_type="Mongo", **kwargs):
+    def __init__(self, is_first=False, logger_name="Spider", database_type="Mongo", **kwargs):
         super().__init__(logger_name, database_type, **kwargs)
         self.is_first = is_first
 
@@ -105,8 +102,9 @@ class UserIdSpiderAPP(Spider):
 
     def _check_first(self):
         if self.is_first:
-            ids = sum([self._crawl_ids_from_community(tab_name, tab_id) for (tab_name, tab_id) in
-                       Constants.CATEGORY], [])
+            ids = sum(
+                [self._crawl_ids_from_community(category["name"], category["code"]) for category in Constants.CATEGORY],
+                [])
             for smzdm_id in ids:
                 user_info_data = self._crawl_user_info(smzdm_id)
                 self._save(data=user_info_data)
@@ -114,9 +112,9 @@ class UserIdSpiderAPP(Spider):
 
     def _crawl_fans_or_follower_helper(self, ids):
         futures = [self.pool.submit(self._crawl_user_info_and_save, smzdm_id) for smzdm_ids in ids for smzdm_id in
-                   smzdm_ids if smzdm_id not in [doc.get("_id") for doc in
-                                                 self._search(filter_dict={"_id": {"$in": smzdm_ids}}, method='many')]]
-
+                   smzdm_ids]
+        # if smzdm_id not in [doc.get("_id") for doc in
+        # self._search(filter_dict={"_id": {"$in": smzdm_ids}}, method='many')]
         # pool.map(self._crawl_user_info_and_save, smzdm_ids, timeout=10)  # map方法
         # for smzdm_id in smzdm_ids:
         #     user_info_data = self._crawl_user_info(smzdm_id)
@@ -124,10 +122,10 @@ class UserIdSpiderAPP(Spider):
         return futures
 
     def _crawl_user_info_and_save(self, smzdm_id):
-        # existed = self._search(filter_dict={"_id": smzdm_id}, method='one')
-        # if existed is None:
-        user_info_data = self._crawl_user_info(smzdm_id)
-        self._save(data=user_info_data)
+        existed = self._search(filter_dict={"_id": smzdm_id}, method='one')
+        if existed is None:
+            user_info_data = self._crawl_user_info(smzdm_id)
+            self._save(data=user_info_data)
 
     def _crawl_ids_from_community(self, tab_name="全部", tab_id=0):
         url_community = Constants.URLS.get("community")
